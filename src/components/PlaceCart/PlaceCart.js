@@ -4,15 +4,12 @@ import {
     Link
   } from "react-router-dom";
 
-const PlaceCart = (props) => {
-    const placeCart = props.placeCart;
+const PlaceCart = () => {
     return (
         <div className="text-light">
-            { placeCart.map(plc => <div><h2 >{plc.title}</h2>
-            <p>
-                {plc.details}
-            </p> </div> ) }
-            <Link to="/booking"><Button variant="warning">Booking →</Button></Link>
+            <h1>Cox's Bazar</h1>
+            <p>Cox's Bazar, the most attractive tourist spots for Bangladesh and not only for Bangladesh it's the longest sea beach in the world. Seventy-five miles 120 Kilo miters sandy sea beach with a gentle slop.</p>
+            <Button variant="warning">Booking →</Button>
         </div>
     );
 };
