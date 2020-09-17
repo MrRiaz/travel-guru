@@ -4,7 +4,10 @@ import { useHistory, useLocation } from 'react-router-dom';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebaseConfig';
-// import { createUserWithEmailAndPassword, handleSignOut, initializeLoginFrameWok, signInWithEmailAndPassword, handleGoogleSignIn, handlefbSignIn  } from './LoginManager';
+import './Login.css';
+import google from '../../travelGuru/Icon/google.png';
+import fb from '../../travelGuru/Icon/fb.png';
+
 firebase.initializeApp(firebaseConfig);
 
 function Login() {
@@ -148,12 +151,8 @@ function Login() {
   
   
     return (
-      <div className="App">
-        { user.isSignIn ? <button onClick={handleSignOut}>Sign Out</button> :
-          <button onClick={handleSignIn}>Sign in</button>
-        }
-        <br/>
-        <button onClick={handlefbSignIn}>Fb sign in</button>
+      <div className="row justify-content-center">
+          <div className="from-area">
         {
           user.isSignIn && <div>
             <p>Welcome, {user.name}</p>
@@ -161,24 +160,30 @@ function Login() {
             <img src={user.photo} alt=""/>
             </div>
         }
-  
-        <h1>Our Own Authentication</h1>
-        {/* <p>Name: {user.name} </p>
-        <p>Email: {user.email} </p>
-        <p>Password: {user.password} </p> */}
         
+        <form onSubmit={handleSubmit}>
+            <h3>Login</h3>
+            <div class="form-group text-dark">
+                { newUser && <input class="form-control" onBlur={handleBlur} type="text" name="name" placeholder="First name"/>
+                // <input type="text"/>
+                }
+                <br/>
+                <input class="form-control" onBlur={handleBlur} type="email" name="email" placeholder="Your Email Address" required/> <br/>
+                <input class="form-control" onBlur={handleBlur} type="password" name="password" placeholder="Your Password" required/> <br/>
+                <input class="form-control bg-warning" type="submit" value={newUser ? "Sign up" : 'Sign in' }/>
+            </div>
+        </form>
         <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUSer" id=""/>
         <label htmlFor="newUSer">New User Sign up</label> <br/>
-        <form onSubmit={handleSubmit}>
-          { newUser && <input onBlur={handleBlur} type="text" name="name" placeholder="Your name"/>}
-          <br/>
-          <input onBlur={handleBlur} type="email" name="email" placeholder="Your Email Address" required/> <br/>
-          <input onBlur={handleBlur} type="password" name="password" placeholder="Your Password" required/> <br/>
-          <input type="submit" value={newUser ? "Sign up" : 'Sign in' }/>
-          <input type="reset" value="Reset"/>
-        </form>
         <p style={{color: 'red'}}>{user.error}</p>
         {user.success &&  <p style={{color: 'green'}}>User {newUser ? 'Created' : 'Logged in'} Successfully</p>}
+
+        { user.isSignIn ? <button onClick={handleSignOut}>Sign Out</button> :
+          <button class="signinbtn" onClick={handleSignIn}> <img src={google} alt="" /> Sign in</button>
+        }
+        <br/>
+        <button class="signinbtn" onClick={handlefbSignIn}> <img src={fb} alt=""/> Fb sign in</button>
+        </div>
       </div>
     );
 }

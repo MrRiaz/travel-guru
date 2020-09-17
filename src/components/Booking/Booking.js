@@ -41,7 +41,7 @@ const Booking = () => {
                     <Link to="/seeHotel">
                         <button type="button" class="btn mt-3 booking btn-warning">Start Booking</button>
                     </Link>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>

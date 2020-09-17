@@ -1,0 +1,17 @@
+.from-area{
+    width: 350px;
+    height: 350px;
+    background-color: #fff;
+    padding: 15px 20px;
+}
+
+.signinbtn{
+    width: 300px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    /* margin-top: 50px; */
+}
+
+.signinbtn img{
+    width: 20px;
+}
